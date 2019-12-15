@@ -1,0 +1,36 @@
+<project name="install-apache-nifi" basedir="." default="install-apache-nifi">
+	<!-- Empty file -->
+	<target name="install-apache-nifi">
+	</target>
+</project>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

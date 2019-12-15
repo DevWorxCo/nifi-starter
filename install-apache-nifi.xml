@@ -1,0 +1,103 @@
+<project name="install-apache-nifi" basedir="." default="install-apache-nifi">
+	
+	 <condition property="isWindows">
+	      <os family="windows" />
+	 </condition>
+
+	 <condition property="isUnix">
+	     <os family="unix" />
+	 </condition>
+	
+	<target name="install-apache-nifi">
+		
+		<echo message="Deleting Previous Nifi Installation - if applicable"/>
+		
+		<delete dir="nifi-deployed/nifi-1.10.0" failonerror="false"/>
+		
+		<echo message="Extracting Nifi Installation"/>
+	
+		<untar dest="nifi-deployed"
+			   compression="gzip"
+			   src="nifi-starter-binaries/nifi/nifi-1.10.0-bin.tar.gz"/>
+		
+		<echo message="Setting Up the Python Execution Space"/>
+	
+		<mkdir dir="nifi-deployed/nifi-1.10.0/python"/>
+		<copy todir="nifi-deployed/nifi-1.10.0/python">
+			<fileset dir="nifi-starter-python" includes="*.py"/>
+		</copy>
+	
+		<echo message="Setting Up the Working Directory"/>
+	
+		<mkdir dir="nifi-deployed/nifi-1.10.0/nifi-starter-workdir"/>
+	
+		<echo message="Setting up the Custom Accumulator NAR File"/>
+	
+		<copy todir="nifi-deployed/nifi-1.10.0/lib" 
+			  file="nifi-starter-processor/nifi-dboerse-accumulator-nar/target/nifi-dboerse-accumulator-nar-1.0-SNAPSHOT.nar"/>
+	
+		<echo message="Dropping in the Example Flow File"/>
+	
+		<gzip src="nifi-starter-example-flow/flow.xml"
+			  destfile="nifi-deployed/nifi-1.10.0/conf/flow.xml.gz" 
+		/>
+	
+
+		<echo message="Starting Up The Nifi Instance - give it a few minutes and you should be able to go to the URL https://localhost:8080"/>
+		
+		<antcall target="run-nifi-win32"/>
+		<antcall target="run-nifi-nix"/>
+	
+    </target>
+	
+	<target name="run-nifi-win32" if="isWindows">
+		<exec dir="nifi-deployed/nifi-1.10.0/bin"
+			  executable="run-nifi.bat">
+		</exec>
+	</target>
+	
+	<target name="run-nifi-nix" if="isUnix">
+			
+		<chmod dir="nifi-deployed/nifi-1.10.0/bin" perm="744" includes="**/*.sh"/>
+	
+			<exec dir="nifi-deployed/nifi-1.10.0/bin"
+				  executable="sh" spawn="true">
+				
+				<arg value="nifi.sh"/>
+				<arg value="start"/>
+	
+			</exec>
+	</target>
+	
+</project>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+ <parent>
+    <groupId>com.jsteenkamp</groupId>
+    <artifactId>nifi-starter-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  
+  <properties>
+	</properties>
+  
+  <artifactId>nifi-starter-binaries</artifactId>
+  <packaging>pom</packaging>
+  <name>nifi-starter-binaries</name>
+ 
+  <build>
+  	<plugins>
+  		 <plugin>
+		        <artifactId>maven-antrun-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <phase>initialize</phase>
+		            <configuration>
+		              <tasks>
+		              	
+		              	<get usetimestamp="true" src="https://www-us.apache.org/dist/nifi/1.10.0/nifi-1.10.0-bin.tar.gz" 
+		              							 dest="nifi/nifi-1.10.0-bin.tar.gz" verbose="on"/>
+		              </tasks>
+		              
+		            </configuration>
+		            <goals>
+		              <goal>run</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
+  	</plugins>
+  </build>
+ 	
+</project>
