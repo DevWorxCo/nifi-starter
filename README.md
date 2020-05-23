@@ -1,5 +1,7 @@
 # Apache Nifi Starter Project
 
+![Build](https://github.com/DevWorxCo/nifi-starter/workflows/Build/badge.svg)
+
 Apache Nifi is a fantastic product that massively boosts your productivity whenever you need to deal with any form of data loading or process automation.  
 
 The purpose of this starter project is to serve as a template to quickly get someone up and running with Nifi and overcome that initial inertia associated in starting with a blank project canvas. This starter project, when you run the commands below, includes a flow that does the following:
