@@ -12,34 +12,34 @@
 		
 		<echo message="Deleting Previous Nifi Installation - if applicable"/>
 		
-		<delete dir="nifi-deployed/nifi-1.11.4" failonerror="false"/>
+		<delete dir="nifi-deployed/nifi-1.12.1" failonerror="false"/>
 		
 		<echo message="Extracting Nifi Installation"/>
 	
 		<untar dest="nifi-deployed"
 			   compression="gzip"
-			   src="nifi-starter-binaries/nifi/nifi-1.11.4-bin.tar.gz"/>
+			   src="nifi-starter-binaries/nifi/nifi-1.12.1-bin.tar.gz"/>
 		
 		<echo message="Setting Up the Python Execution Space"/>
 	
-		<mkdir dir="nifi-deployed/nifi-1.11.4/python"/>
-		<copy todir="nifi-deployed/nifi-1.11.4/python">
+		<mkdir dir="nifi-deployed/nifi-1.12.1/python"/>
+		<copy todir="nifi-deployed/nifi-1.12.1/python">
 			<fileset dir="nifi-starter-python" includes="*.py"/>
 		</copy>
 	
 		<echo message="Setting Up the Working Directory"/>
 	
-		<mkdir dir="nifi-deployed/nifi-1.11.4/nifi-starter-workdir"/>
+		<mkdir dir="nifi-deployed/nifi-1.12.1/nifi-starter-workdir"/>
 	
 		<echo message="Setting up the Custom Accumulator NAR File"/>
 	
-		<copy todir="nifi-deployed/nifi-1.11.4/lib"
-			  file="nifi-starter-processor/nifi-dboerse-accumulator-nar/target/nifi-dboerse-accumulator-nar-1.0-SNAPSHOT.nar"/>
+		<copy todir="nifi-deployed/nifi-1.12.1/lib"
+			  file="nifi-starter-processor/nifi-dboerse-accumulator-nar/target/nifi-dboerse-accumulator-nar-1.0.1.nar"/>
 	
 		<echo message="Dropping in the Example Flow File"/>
 	
 		<gzip src="nifi-starter-example-flow/flow.xml"
-			  destfile="nifi-deployed/nifi-1.11.4/conf/flow.xml.gz"
+			  destfile="nifi-deployed/nifi-1.12.1/conf/flow.xml.gz"
 		/>
 	
 
@@ -51,16 +51,16 @@
     </target>
 	
 	<target name="run-nifi-win32" if="isWindows">
-		<exec dir="nifi-deployed/nifi-1.11.4/bin"
+		<exec dir="nifi-deployed/nifi-1.12.1/bin"
 			  executable="run-nifi.bat">
 		</exec>
 	</target>
 	
 	<target name="run-nifi-nix" if="isUnix">
 			
-		<chmod dir="nifi-deployed/nifi-1.11.4/bin" perm="744" includes="**/*.sh"/>
+		<chmod dir="nifi-deployed/nifi-1.12.1/bin" perm="744" includes="**/*.sh"/>
 	
-			<exec dir="nifi-deployed/nifi-1.11.4/bin"
+			<exec dir="nifi-deployed/nifi-1.12.1/bin"
 				  executable="sh" spawn="true">
 				
 				<arg value="nifi.sh"/>
