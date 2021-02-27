@@ -7,9 +7,9 @@
 	<groupId>com.jsteenkamp</groupId>
 	<artifactId>nifi-starter-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>nifi-starter-parent</name>
-	<url>https://github.com/jjsteenkamp/nifi-starter</url>
+	<url>https://github.com/DevWorxCo/nifi-starter</url>
 
 	<profiles>
 		<profile>
@@ -71,7 +71,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 
