@@ -33,7 +33,7 @@ That will extract the Nifi binaries, deploy the Python scripts, initialise the d
 
 ### Step (3)
 
-That's it - after waiting a few seconds (takes around 13 seconds on my machine - you can verify by tailing the `nifi-deployed/nifi-1.13.0/logs/nifi-app.log` file) you are now ready to open the browser and inspect the flow - http://localhost:8080/nifi/ :
+That's it - after waiting a few seconds (takes around 13 seconds on my machine - you can verify by tailing the `nifi-deployed/nifi-1.13.2/logs/nifi-app.log` file) you are now ready to open the browser and inspect the flow - http://localhost:8080/nifi/ :
 
  
 ![Alt text](Nifi-Flow-Screenshot.png?raw=true "Nifi Flow Screenshot")
@@ -47,7 +47,7 @@ The Nifi flow is defined from left to right. The first processor - `List DBoerse
 
 The file names in the flow eventually reaches the `FetchS3Object` which is fetches the actual CSV file from the S3 bucket and passes it along to our custom processor - `DBoerseAccumulatorProcessor`. If anything goes wrong, the flow file (and error) is redirected to the `Log Failure` processor (in fact, I reuse this processor for a number of error conditions). In a production system, you may want to consider this processor to raise an alert to your operations team rather than just putting content in the Nifi log file.
 
-The `DBoerseAccumulatorProcessor` is a custom processor that aggregates up the Deutsche Börse and groups it by Business Date and ISIN. It does so by keeping a `com.jsteenkamp.processors.state.DBoerseState` object in memory which it then also periodically flushes down to disk (and reads from on start-up if say, Nifi crashes). The file is located here - `nifi-deployed/nifi-1.13.0/nifi-starter-workdir/DBoerseState.json` (by default, you can change this in the processor configuration) and looks a little bit like:
+The `DBoerseAccumulatorProcessor` is a custom processor that aggregates up the Deutsche Börse and groups it by Business Date and ISIN. It does so by keeping a `com.jsteenkamp.processors.state.DBoerseState` object in memory which it then also periodically flushes down to disk (and reads from on start-up if say, Nifi crashes). The file is located here - `nifi-deployed/nifi-1.13.2/nifi-starter-workdir/DBoerseState.json` (by default, you can change this in the processor configuration) and looks a little bit like:
 
 ```javascript
 {
@@ -90,7 +90,7 @@ data = sys.stdin.readlines()
 read_json_and_output_image(sys.argv[1], data, sys.argv[2])
 ```
   
-The output image file (`nifi-deployed/nifi-1.13.0/nifi-starter-workdir/python-plot-from-nifi.png` by default) produced by the Python script looks something like this:
+The output image file (`nifi-deployed/nifi-1.13.2/nifi-starter-workdir/python-plot-from-nifi.png` by default) produced by the Python script looks something like this:
 
 ![Alt text](python-plot-from-nifi.png?raw=true "Output Plot From Python")
  
@@ -100,7 +100,7 @@ The output image file (`nifi-deployed/nifi-1.13.0/nifi-starter-workdir/python-pl
 To stop Nifi you can run:
  
 ```
-cd nifi-deployed/nifi-1.13.0/bin/
+cd nifi-deployed/nifi-1.13.2/bin/
 ./nifi.sh stop
 ```
 

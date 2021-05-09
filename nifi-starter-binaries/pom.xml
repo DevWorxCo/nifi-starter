@@ -26,8 +26,8 @@
 		            <configuration>
 		              <tasks>
 		              	
-		              	<get usetimestamp="true" src="https://mirrors.ukfast.co.uk/sites/ftp.apache.org/nifi/1.13.0/nifi-1.13.0-bin.tar.gz"
-		              							 dest="nifi/nifi-1.13.0-bin.tar.gz" verbose="on"/>
+		              	<get usetimestamp="true" src="https://mirrors.ukfast.co.uk/sites/ftp.apache.org/nifi/1.13.2/nifi-1.13.2-bin.tar.gz"
+		              							 dest="nifi/nifi-1.13.2-bin.tar.gz" verbose="on"/>
 		              </tasks>
 		              
 		            </configuration>
