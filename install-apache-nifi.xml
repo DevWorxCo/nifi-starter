@@ -1,5 +1,7 @@
 <project name="install-apache-nifi" basedir="." default="install-apache-nifi">
-	
+
+	<property name="nifi.sensitive.props.key" value="nifi-starter"/>
+
 	 <condition property="isWindows">
 	      <os family="windows" />
 	 </condition>
@@ -41,7 +43,18 @@
 		<gzip src="nifi-starter-example-flow/flow.xml"
 			  destfile="nifi-deployed/nifi-1.15.3/conf/flow.xml.gz"
 		/>
-	
+
+		<echo message="Update the Nifi Properties File with a properties key - ${nifi.sensitive.props.key}"/>
+
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.sensitive.props.key=${nifi.sensitive.props.key}" value="nifi.sensitive.props.key="/>
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.sensitive.props.key=" value="nifi.sensitive.props.key=${nifi.sensitive.props.key}"/>
+
+		<!--
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.web.http.host=" value="nifi.web.http.host=127.0.0.1"/>
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.web.http.port=" value="nifi.web.http.port=8080"/>
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.web.https.host=127.0.0.1" value="nifi.web.https.host="/>
+		<replace file="nifi-deployed/nifi-1.15.3/conf/nifi.properties" token="nifi.web.https.port=8443" value="nifi.web.https.port="/>
+		-->
 
 		<echo message="Starting Up The Nifi Instance - give it a few minutes and you should be able to go to the URL https://localhost:8080"/>
 		
@@ -49,8 +62,20 @@
 		<antcall target="run-nifi-nix"/>
 	
     </target>
-	
+
 	<target name="run-nifi-win32" if="isWindows">
+
+		<echo message="Setting Default Username and Password as : admin / ${nifi.sensitive.props.key}"/>
+
+		<exec dir="nifi-deployed/nifi-1.15.3/bin"
+			  executable="nifi.sh">
+			<arg value="set-single-user-credentials"/>
+			<arg value="admin"/>
+			<arg value="${nifi.sensitive.props.key}"/>
+		</exec>
+
+		<echo message="Starting up Nifi"/>
+
 		<exec dir="nifi-deployed/nifi-1.15.3/bin"
 			  executable="run-nifi.bat">
 		</exec>
@@ -59,13 +84,22 @@
 	<target name="run-nifi-nix" if="isUnix">
 			
 		<chmod dir="nifi-deployed/nifi-1.15.3/bin" perm="744" includes="**/*.sh"/>
-	
+
+		<echo message="Setting Default Username and Password as : admin / ${nifi.sensitive.props.key}"/>
+
+		<exec dir="nifi-deployed/nifi-1.15.3/bin"
+			  executable="sh">
+			<arg value="nifi.sh"/>
+			<arg value="set-single-user-credentials"/>
+			<arg value="admin"/>
+			<arg value="${nifi.sensitive.props.key}"/>
+		</exec>
+
+		<echo message="Starting up Nifi"/>
 			<exec dir="nifi-deployed/nifi-1.15.3/bin"
 				  executable="sh" spawn="true">
-				
 				<arg value="nifi.sh"/>
 				<arg value="start"/>
-	
 			</exec>
 	</target>
 	

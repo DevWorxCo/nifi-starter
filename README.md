@@ -28,12 +28,27 @@ This will build all the binaries required for this installation. *Please Note* -
 mvn initialize -Pinstall-start-nifi
 ```
 
-That will extract the Nifi binaries, deploy the Python scripts, initialise the default flow and start up Nifi. *Please Note* - you will need to ensure you have nothing running on port 8080 (as Nifi will attempt to listen on it).
+That will extract the Nifi binaries, deploy the Python scripts, initialise the default flow and start up Nifi. *Please Note* - you will need to ensure you have nothing running on port 8443 (as Nifi will attempt to listen on it).
 
 
 ### Step (3)
 
-That's it - after waiting a few seconds (takes around 13 seconds on my machine - you can verify by tailing the `nifi-deployed/nifi-1.15.3/logs/nifi-app.log` file) you are now ready to open the browser and inspect the flow - http://localhost:8080/nifi/ :
+That's it - after waiting a few seconds (takes around 13 seconds on my machine - you can verify by tailing the `nifi-deployed/nifi-1.15.3/logs/nifi-app.log` file) you are now ready to open the browser and inspect the flow - https://localhost:8443/nifi/ :
+
+---
+**NOTE**
+
+Nifi will generate its own self-signed certificate upon startup. Therefore, when you open the above-mentioned URL, you will be prompted to accept the self-signed certificate.
+
+In addition, you will be prompted for a username and password. As part of the initialization steps we set the following username and password: 
+
+**Username:** admin
+
+**Password:** nifi-starter
+
+For more information have a look at the `install-apache-nifi.xml` file.
+
+---
 
  
 ![Alt text](Nifi-Flow-Screenshot.png?raw=true "Nifi Flow Screenshot")
