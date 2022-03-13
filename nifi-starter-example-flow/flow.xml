@@ -21,7 +21,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-standard-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>
@@ -55,7 +55,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-standard-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>
@@ -90,7 +90,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-update-attribute-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>
@@ -135,7 +135,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-standard-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>
@@ -187,7 +187,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-aws-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>3600 sec</schedulingPeriod>
@@ -290,7 +290,7 @@
       <comment/>
       <class>com.jsteenkamp.processors.DBoerseAccumulatorProcessor</class>
       <bundle>
-        <group>com.jsteenkamp</group>
+        <group>uk.co.devworx</group>
         <artifact>nifi-dboerse-accumulator-nar</artifact>
         <version>1.0.2</version>
       </bundle>
@@ -319,7 +319,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-standard-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>
@@ -373,7 +373,7 @@
       <bundle>
         <group>org.apache.nifi</group>
         <artifact>nifi-aws-nar</artifact>
-        <version>1.13.2</version>
+        <version>1.15.3</version>
       </bundle>
       <maxConcurrentTasks>1</maxConcurrentTasks>
       <schedulingPeriod>0 sec</schedulingPeriod>

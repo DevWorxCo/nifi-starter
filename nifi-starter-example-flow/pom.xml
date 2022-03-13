@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   
  <parent>
-    <groupId>com.jsteenkamp</groupId>
+    <groupId>uk.co.devworx</groupId>
     <artifactId>nifi-starter-parent</artifactId>
     <version>1.0.2</version>
     <relativePath>../pom.xml</relativePath>

@@ -17,7 +17,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jsteenkamp</groupId>
+        <groupId>uk.co.devworx</groupId>
         <artifactId>nifi-starter-processor</artifactId>
         <version>1.0.2</version>
     </parent>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-utils</artifactId>
-            <version>1.13.2</version>
+            <version>1.15.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
