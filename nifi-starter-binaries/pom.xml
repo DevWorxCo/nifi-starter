@@ -26,7 +26,7 @@
 		            <configuration>
 		              <tasks>
 		              	
-		              	<get usetimestamp="true" src="https://dlcdn.apache.org/nifi/1.15.3/nifi-1.15.3-bin.tar.gz"
+		              	<get usetimestamp="true" src="https://archive.apache.org/dist/nifi/1.15.3/nifi-1.15.3-bin.tar.gz"
 		              							 dest="nifi/nifi-1.15.3-bin.tar.gz" verbose="on"/>
 		              </tasks>
 		              
